@@ -19,7 +19,9 @@ app.use(cors())
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 5000,  // Adjust the timeout value
+        socketTimeoutMS: 45000,
     })
     .then(console.log("Connected to MongoDB"))
     .catch((err) => console.log("NOT CONNECTED TO NETWORK", err))
